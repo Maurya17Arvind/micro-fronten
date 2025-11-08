@@ -1,0 +1,79 @@
+<main class="page">
+  <section class="container">
+    <div class="card">
+      <div class="left">
+        <div class="brand">
+          <h1>Welcome back</h1>
+          <p>Sign in to continue to your dashboard.</p>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <label class="field">
+            <span class="label">Email</span>
+            <input type="email" formControlName="email" placeholder="you@company.com" />
+            @if(emailInvalid()){
+            <small class="error">Please enter a valid email.</small>
+            }
+          </label>
+
+          <label class="field">
+            <span class="label">Password</span>
+            <div class="pw-row">
+              <input
+                [type]="showPassword() ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                class="toggle"
+                (click)="togglePassword()"
+                aria-label="Toggle password"
+              >
+                {{ showPassword() ? 'Hide' : 'Show' }}
+              </button>
+            </div>
+            @if(passwordInvalid()){
+
+            <small class="error">Password is required (min 6 chars).</small>
+            }
+          </label>
+
+          <label class="opts">
+            <label class="remember">
+              <input type="checkbox" formControlName="remember" />
+              <span>Remember me</span>
+            </label>
+            <a class="forgot" routerLink="/forgot">Forgot?</a>
+          </label>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">
+              @if(!loading()){
+              <span>Sign in</span>
+              }@else {
+              <span>Signing in…</span>
+              }
+            </button>
+          </div>
+          @if(errorMessage()){
+
+          <div class="error-global">{{ errorMessage() }}</div>
+          }
+
+          <p class="signup">
+            Don’t have an account?
+            <a routerLink="/register">Create account</a>
+          </p>
+        </form>
+      </div>
+
+      <aside class="right" aria-hidden="true">
+        <div class="decor">
+          <!-- use NgOptimizedImage for static images if you add any -->
+          <h3>Secure. Fast. Beautiful.</h3>
+          <p>Built with your brand in mind.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

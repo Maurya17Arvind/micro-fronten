@@ -1,0 +1,114 @@
+<main class="page">
+  <section class="container">
+    <div class="card">
+      <div class="left">
+        <div class="brand">
+          <h1>Create account</h1>
+          <p>Sign up and start using your account today.</p>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <label class="field">
+            <span class="label">Full name</span>
+            <input formControlName="name" placeholder="Jane Doe" autocomplete="name" />
+            @if(nameInvalid()){
+            <small class="error">Name is required.</small>
+            }
+          </label>
+
+          <label class="field">
+            <span class="label">Email</span>
+            <input formControlName="email" placeholder="you@company.com" autocomplete="email" />
+
+            @if(emailInvalid()){
+            <small class="error">Please enter a valid email.</small>
+            }
+          </label>
+
+          <label class="field">
+            <span class="label">Password</span>
+            <div class="pw-row">
+              <input
+                [type]="showPassword() ? 'text' : 'password'"
+                formControlName="password"
+                placeholder="At least 8 characters"
+                autocomplete="new-password"
+              />
+              <button
+                type="button"
+                class="toggle"
+                (click)="togglePassword()"
+                aria-label="Toggle password"
+              >
+                {{ showPassword() ? 'Hide' : 'Show' }}
+              </button>
+            </div>
+            @if(passwordInvalid()){
+            <small class="error"
+              >Password must be at least 8 characters and include a number and a symbol.</small
+            >
+            }
+
+            <div class="pw-strength" aria-hidden="true">
+              <div class="meter">
+                <div class="bar" [attr.data-strength]="passwordStrengthLabel()"></div>
+              </div>
+              <small class="muted">Strength: {{ passwordStrengthLabel() }}</small>
+            </div>
+          </label>
+
+          <label class="field">
+            <span class="label">Confirm password</span>
+            <input
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="confirmPassword"
+              placeholder="Repeat password"
+              autocomplete="new-password"
+            />
+            @if(confirmPasswordInvalid()){
+            <small class="error">Passwords do not match.</small>
+
+            }
+          </label>
+
+          <label class="opts-terms">
+            <label class="remember">
+              <input type="checkbox" formControlName="acceptTerms" />
+              <span> I agree to the <a class="link">Terms & Privacy</a></span>
+            </label>
+            @if(termsInvalid()){
+            <small class="error">You must accept terms to continue.</small>
+            }
+          </label>
+
+          <div class="actions">
+            <button type="submit" [disabled]="loading() || form.invalid" class="btn-primary">
+              @if(!loading()){
+
+              <span>Create account</span>
+              }@else {
+
+              <span>Creating…</span>
+              }
+            </button>
+          </div>
+          @if(errorMessage()){
+          <div class="error-global">{{ errorMessage() }}</div>
+          }
+
+          <p class="signup">
+            Already have an account?
+            <a routerLink="">Sign in</a>
+          </p>
+        </form>
+      </div>
+
+      <aside class="right" aria-hidden="true">
+        <div class="decor">
+          <h3>Welcome aboard</h3>
+          <p>Join and secure your workflows with a single account.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>

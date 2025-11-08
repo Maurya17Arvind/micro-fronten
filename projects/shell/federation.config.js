@@ -13,6 +13,7 @@ module.exports = withNativeFederation({
     "header": "http://localhost:4201/remoteEntry.json",
     "users": "http://localhost:4202/remoteEntry.json",
     "chat": "http://localhost:4203/remoteEntry.json",
+    "auth": "http://localhost:4204/remoteEntry.json",
   },
 
   skip: [

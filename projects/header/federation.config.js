@@ -5,11 +5,12 @@ module.exports = withNativeFederation({
 
   exposes: {
     './Component': './projects/header/src/app/app.ts',
+    './routes': './projects/header/src/app/app.routes.ts',
   },
 
-  remotes: {
-    shell: 'http://localhost:4200/remoteEntry.json',
-  },
+  // remotes: {
+  //   shell: 'http://localhost:4200/remoteEntry.json',
+  // },
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),

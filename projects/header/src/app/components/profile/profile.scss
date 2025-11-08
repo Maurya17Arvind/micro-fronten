@@ -1,0 +1,235 @@
+$bg: #0b0f14;
+$card: rgba(255, 255, 255, 0.06);
+$text: #edf2f7;
+$muted: #9aa4b2;
+$brand: #7c5cff;
+$brand-2: #00d0ff;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+@mixin glass-card {
+  background: $card;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: $shadow;
+}
+
+@mixin center-flex($gap: 12px) {
+  display: flex;
+  align-items: center;
+  gap: $gap;
+}
+
+:root {
+  --radius-xl: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  color: $text;
+  background: radial-gradient(1200px 800px at 10% 0%, rgba(124, 92, 255, 0.15), transparent 50%),
+    radial-gradient(900px 900px at 100% 20%, rgba(0, 208, 255, 0.12), transparent 40%), $bg;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+.profile {
+  @include glass-card;
+  overflow: hidden;
+}
+
+.profile__cover {
+  position: relative;
+  height: 220px;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.55), rgba(0, 208, 255, 0.55));
+}
+.profile__cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop')
+    center/cover no-repeat;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+}
+
+.profile__avatar {
+  position: relative;
+  margin-top: -56px;
+  padding: 0 24px;
+  @include center-flex(16px);
+}
+
+.avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.9);
+  box-shadow: $shadow;
+  object-fit: cover;
+}
+
+.profile__head {
+  @include center-flex(16px);
+  justify-content: space-between;
+  width: 100%;
+}
+
+.user-meta {
+  flex: 1;
+}
+.user-meta__name {
+  font-size: 24px;
+  font-weight: 700;
+}
+.user-meta__handle {
+  color: $muted;
+  margin-top: 4px;
+}
+.user-meta__bio {
+  color: lighten($muted, 10%);
+  margin-top: 10px;
+}
+
+.actions {
+  @include center-flex(10px);
+}
+.btn {
+  @include center-flex(8px);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: $text;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+  &:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+  &--primary {
+    background: linear-gradient(135deg, $brand, $brand-2);
+    border: none;
+  }
+}
+
+.stats {
+  @include center-flex(24px);
+  padding: 18px 24px 8px;
+  color: $muted;
+}
+.stat {
+  @include center-flex(8px);
+}
+.stat__num {
+  color: $text;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.tabs {
+  @include center-flex(4px);
+  padding: 0 12px 12px;
+}
+.tab {
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: $muted;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  &--active {
+    color: $text;
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  padding: 16px 16px 24px;
+  grid-template-columns: 1.3fr 0.7fr;
+}
+
+.card {
+  @include glass-card;
+  padding: 18px;
+}
+.card__title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $muted;
+  margin-bottom: 14px;
+}
+
+.about {
+  display: grid;
+  gap: 12px;
+  &__row {
+    @include center-flex(12px);
+    color: $muted;
+  }
+  &__key {
+    width: 120px;
+    color: lighten($muted, 8%);
+  }
+  &__val {
+    color: $text;
+    font-weight: 600;
+  }
+}
+
+.activity {
+  display: grid;
+  gap: 12px;
+}
+.activity__item {
+  @include center-flex(10px);
+  color: $muted;
+}
+.activity__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $brand, $brand-2);
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.photos img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .stats {
+    flex-wrap: wrap;
+  }
+  .avatar {
+    width: 96px;
+    height: 96px;
+  }
+}

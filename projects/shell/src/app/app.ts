@@ -1,6 +1,6 @@
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoadProjects } from './service/load-projects';
 import { SharedStateService } from './service/shared-state-service';
@@ -14,6 +14,7 @@ import { SharedStateService } from './service/shared-state-service';
 export class App implements OnInit {
   private loadProjects = inject(LoadProjects);
   private SharedStateService = inject(SharedStateService);
+  private router = inject(Router);
 
   protected readonly title = signal('shell');
 
@@ -21,6 +22,9 @@ export class App implements OnInit {
   headerComponent = new BehaviorSubject<any>(null);
   userListComponent = new BehaviorSubject<any>(null);
   chatWindowComponent = new BehaviorSubject<any>(null);
+
+  // Signal to control visibility of users/chat micro-frontends
+  showMicroFrontends = signal(true);
 
   async ngOnInit() {
     try {
@@ -41,6 +45,18 @@ export class App implements OnInit {
     } catch (error) {
       console.error('Error loading micro-frontends:', error);
     }
+
+    // Hide users/chat when the current route is /profile
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const url = event.urlAfterRedirects ?? (event as any).url;
+        const isProfile = url.includes('/profile');
+        console.log('NavigationEnd event:', url, 'isProfile:', isProfile);
+
+        this.showMicroFrontends.set(!isProfile);
+      }
+    });
+
     this.SharedStateService.setUserData({ userId: '1', isAuthenticated: true });
   }
 }
