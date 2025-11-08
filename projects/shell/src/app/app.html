@@ -1,0 +1,15 @@
+<!-- <header> -->
+@if(headerComponent | async; as comp){
+<ng-container [ngComponentOutlet]="comp"></ng-container>
+}
+<!-- </header> -->
+<div class="chat-wrap">
+  @if(userListComponent | async; as comp){
+  <ng-container [ngComponentOutlet]="comp"></ng-container>
+  }
+
+  <!-- 3. CHAT WINDOW MFE (Main Area) -->
+  @if(chatWindowComponent | async; as comp){
+  <ng-container [ngComponentOutlet]="comp"></ng-container>
+  }
+</div>

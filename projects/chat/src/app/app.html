@@ -1,0 +1,58 @@
+<section class="panel" aria-label="Chat window">
+  <header class="panel-header">
+    <div class="avatar">{{ currentUser().initials }}</div>
+    <div style="flex: 1">
+      <div class="name">{{ currentUser().name }}</div>
+      <div class="muted">Online — typing…</div>
+    </div>
+    <div class="muted">Last seen: 10:22 AM</div>
+  </header>
+
+  <main class="panel-body">
+    <div class="messages" id="messages">
+      <div class="system">You are now connected — messages are end-to-end encrypted</div>
+
+      <div class="msg-row incoming">
+        <div class="avatar" style="width: 36px; height: 36px; border-radius: 8px">AL</div>
+        <div>
+          <div class="bubble incoming">
+            Hey — here’s the updated mock. Do you want me to push the assets?
+          </div>
+          <div class="meta-small">Alice • 10:24 AM</div>
+        </div>
+      </div>
+
+      <div class="msg-row outgoing">
+        <div>
+          <div class="bubble outgoing">
+            Looks great! Please push them and I’ll review in 15 mins.
+          </div>
+          <div class="meta-small" style="text-align: right">You • 10:25 AM</div>
+        </div>
+        <div
+          class="avatar"
+          style="width: 36px; height: 36px; border-radius: 8px; background: #dcfce7; color: #065f46"
+        >
+          Y
+        </div>
+      </div>
+
+      <div class="msg-row incoming">
+        <div class="avatar" style="width: 36px; height: 36px; border-radius: 8px">AL</div>
+        <div>
+          <div class="bubble incoming">Great — I also added a quick notes list.</div>
+          <div class="meta-small">Alice • 10:26 AM</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <form class="composer" id="composer" onsubmit="return false;">
+    <div class="input" role="textbox" aria-label="Message input">
+      <button class="icon-btn" type="button" title="Emoji">😊</button>
+      <textarea id="msg" rows="1" placeholder="Type a message..."></textarea>
+      <button class="icon-btn" type="button" title="Attach">📎</button>
+    </div>
+    <button class="send-btn" id="send">Send</button>
+  </form>
+</section>

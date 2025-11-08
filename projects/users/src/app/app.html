@@ -1,0 +1,48 @@
+<!-- <router-outlet/>
+<div class="user-list">
+  @for(user of users; track user.name){
+  <div class="user" (click)="selectUser(user)">
+    <img [src]="user.profile" alt="Profile" class="user-profile" />
+    <div class="user-details">
+      <p class="name">{{ user.name }}</p>
+      <p class="last-message">{{ user.lastMessage }}</p>
+    </div>
+  </div>
+  }
+</div> -->
+<aside class="sidebar" aria-label="Conversations">
+  <div class="brand">
+    <div class="logo">G</div>
+    <div>
+      <div class="title">Glooable Chat</div>
+      <div class="sub">Design mock — HTML + CSS</div>
+    </div>
+  </div>
+
+  <div class="search" role="search">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M21 21l-4.35-4.35"
+        stroke="#9CA3AF"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <circle cx="11" cy="11" r="6" stroke="#9CA3AF" stroke-width="1.5"></circle>
+    </svg>
+    <input placeholder="Search conversations" />
+  </div>
+
+  <div class="contacts">
+    @for(user of users; track user.name){
+    <div class="contact" (click)="selectUser(user)">
+      <div class="avatar">{{ user.initials }}</div>
+      <div class="meta">
+        <div class="name">{{ user.name }}</div>
+        <div class="last">{{ user.lastMessage }}</div>
+      </div>
+      <div class="muted">{{ user.time }}</div>
+    </div>
+    }
+  </div>
+</aside>

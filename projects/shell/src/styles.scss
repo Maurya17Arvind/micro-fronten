@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f3f6fb;
+  --panel: #ffffff;
+  --muted: #6b7280;
+  --accent: #4f46e5;
+  --incoming: #eef2ff;
+  --outgoing: #e6f4ea;
+  --radius: 14px;
+  --shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+  --max-width: 940px;
+  --glass: rgba(255, 255, 255, 0.6);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial;
+}
+
+/* Page layout */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--bg), #e9eef8 60%);
+}
+
+.chat-wrap {
+  width: 100%;
+  height: 640px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+}
