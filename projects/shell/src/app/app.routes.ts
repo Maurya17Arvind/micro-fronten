@@ -4,6 +4,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'auth',
+    pathMatch: 'full',
+  },
+  {
+    path: 'auth',
     loadChildren: () =>
       loadRemoteModule({
         remoteEntry: 'http://localhost:4204/remoteEntry.json',
@@ -17,8 +22,8 @@ export const routes: Routes = [
       loadRemoteModule({
         remoteEntry: 'http://localhost:4203/remoteEntry.json',
         remoteName: 'chat',
-        exposedModule: './Component',
-      }).then((m) => m.App),
+        exposedModule: './routes',
+      }).then((m) => m.routes),
   },
   {
     path: 'profile',

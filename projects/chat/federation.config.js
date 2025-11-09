@@ -6,6 +6,7 @@ module.exports = withNativeFederation({
 
   exposes: {
     './Component': './projects/chat/src/app/app.ts',
+    './routes': './projects/chat/src/app/app.routes.ts',
   },
 
   shared: {
@@ -29,5 +30,5 @@ module.exports = withNativeFederation({
     // get the traditional behavior:
     ignoreUnusedDeps: true
   }
-  
+
 });

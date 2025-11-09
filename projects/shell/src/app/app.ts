@@ -1,4 +1,3 @@
-import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -7,9 +6,9 @@ import { SharedStateService } from './service/shared-state-service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgComponentOutlet, AsyncPipe],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App implements OnInit {
   private loadProjects = inject(LoadProjects);

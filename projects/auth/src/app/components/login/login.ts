@@ -46,7 +46,7 @@ export class Login {
 
   async submit() {
     // reset
-    await this.router.navigateByUrl('/chat');
+    await this.router.navigate(['/chat']);
 
     this.errorMessage.set(null);
     // remove early navigation; validate form first
