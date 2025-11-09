@@ -46,7 +46,6 @@ export class ChatWindow {
       );
 
       const module = await loadRemoteModule({
-        remoteEntry: `http://localhost:${port}/remoteEntry.json`,
         remoteName,
         exposedModule: exposedModule,
       });

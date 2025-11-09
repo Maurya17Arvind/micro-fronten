@@ -1,0 +1,6 @@
+{
+  "header": "https://staging.example.com/remoteEntry.json",
+  "users": "https://staging.example.com/remoteEntry.json",
+  "chat": "https://staging.example.com/remoteEntry.json",
+  "auth": "https://staging.example.com/remoteEntry.json"
+}

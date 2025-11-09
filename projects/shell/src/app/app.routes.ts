@@ -11,7 +11,6 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: 'http://localhost:4204/remoteEntry.json',
         remoteName: 'auth',
         exposedModule: './routes',
       }).then((m) => m.routes),
@@ -20,7 +19,6 @@ export const routes: Routes = [
     path: 'chat',
     loadChildren: () =>
       loadRemoteModule({
-        remoteEntry: 'http://localhost:4203/remoteEntry.json',
         remoteName: 'chat',
         exposedModule: './routes',
       }).then((m) => m.routes),
@@ -33,4 +31,6 @@ export const routes: Routes = [
         exposedModule: './routes',
       }).then((m) => m.routes),
   },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth' },
 ];
