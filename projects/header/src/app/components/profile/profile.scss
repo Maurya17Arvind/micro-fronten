@@ -100,7 +100,7 @@ body {
   margin-top: 4px;
 }
 .user-meta__bio {
-  color: lighten($muted, 10%);
+  // color: lighten($muted, 10%);
   margin-top: 10px;
 }
 
@@ -186,7 +186,7 @@ body {
   }
   &__key {
     width: 120px;
-    color: lighten($muted, 8%);
+    // color: lighten($muted, 8%);
   }
   &__val {
     color: $text;
